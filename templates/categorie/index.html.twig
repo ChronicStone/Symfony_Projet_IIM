@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategorieController!{% endblock %}
+
+{% block body %}
+
+    <h1 style="display:flex;justify-content:center;">Liste des Catégories</h1>
+    <div class="globalContainer">
+        <div class="mainContainer">
+            {% if categories is not empty %}
+                <table class="table" style="width:auto;">
+                    <thead style="">
+                            <tr>
+                            <th style="width:250px">Nom</th>
+                            <th style="width:250px;">Description</tr>
+                        <tr>
+                    </thead>
+                    <tbody style="">
+                        {% for une_categorie in categories %}
+                            <tr>
+                                <td style="width:250px;"><a class="" href="{{ path('show_categorie', {'id': une_categorie.id}) }}">{{une_categorie.name}}</a></td>
+                                <td style="width:250px;">{{une_categorie.Description}}</td>
+                                <td style="width:250px;"><a href="{{path('delete_categorie', {'id': une_categorie.id}) }}">DELETE</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p> Il n'y a aucune catégorie a afficher </p>
+            {% endif %}
+            <div style="width:750px;">
+            {{form(form_categorie_new)}}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

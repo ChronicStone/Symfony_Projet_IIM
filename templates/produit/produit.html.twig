@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{myproduit.nom}} {% endblock %}
+
+{% block body %}
+   <h1>{{myproduit.nom}}</h1> 
+   <p> Description : {{myproduit.Description}} </h1>
+   <br/><br/>
+
+   <h2>EDIT</h2>
+   {{form(form_produit_change)}}
+{% endblock %}

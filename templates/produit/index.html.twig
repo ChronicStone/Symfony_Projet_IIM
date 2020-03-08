@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProduitController!{% endblock %}
+
+{% block body %}
+
+    <h1>Liste des produits</h1>
+    {% if produits is not empty %}
+        <table border="1">
+            <thead>
+                <tr style="display:flex;justify-content:center;">
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Quantité</th>
+                    <th>Prix</tr>                    
+                    <th>Catégorie</tr>
+                <tr>
+            </thead>
+            <tbody>
+                {% for un_produit in produits %}
+                    <tr>
+                        <td><a href="{{ path('show_produit', {'id': un_produit.id}) }}">{{un_produit.nom}}</a></td>
+                        <td>{{un_produit.Description}}</td>
+                        <td>{{un_produit.qty}}</td>
+                        <td>{{un_produit.price}}</td>
+                        <td>{{un_produit.categorie}}</td>
+                        <td><a href="{{path('delete_produit', {'id': un_produit.id}) }}">DELETE</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p> Il n'y a aucun projet a afficher </p>
+    {% endif %}
+
+    {{form(form_produit_new)}}
+
+
+
+{% endblock %}
